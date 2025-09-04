@@ -1,0 +1,16 @@
+
+<h1>My Todos</h1>
+<div id="todos">
+    <hr>
+    {{range .Todos}}
+    <div class="todo">
+        <form action="/toggle/{{.ID}}" method="POST">
+        <input type="checkbox" name="done" {{if .Done}}checked{{end}} onchange="this.form.submit()">
+        </form> 
+        <h2>{{.Text}}</h2>
+        <a href="/delete/{{.ID}}">Delete</a>
+    </div>
+    <hr>
+    {{end}}
+    <button onclick="window.location.href='/add/'">New Todo</button>
+</div>
